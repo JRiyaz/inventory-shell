@@ -1,0 +1,4 @@
+{
+  "user": "http://localhost:4300/remoteEntry.js",
+  "inventory": "http://localhost:4400/remoteEntry.js"
+}
