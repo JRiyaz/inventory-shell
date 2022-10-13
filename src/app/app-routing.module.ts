@@ -61,8 +61,8 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         type: 'manifest',
-        remoteName: 'mfe1',
-        exposedModule: './Module'
+        remoteName: 'flight',
+        exposedModule: './Home'
       })
         .then(m => m.HomeModule)
   },
