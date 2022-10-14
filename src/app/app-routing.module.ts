@@ -1,8 +1,8 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationLayoutComponent } from './authentication-layout/authentication-layout.component';
-import { CommonLayoutComponent } from './common-layout/common-layout.component';
+import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
+import { CommonLayoutComponent } from './layouts/common-layout/common-layout.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
