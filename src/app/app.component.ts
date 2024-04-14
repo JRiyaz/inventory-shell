@@ -1,18 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
+import { RouterLink, RouterOutlet } from "@angular/router";
 import { initFlowbite } from "flowbite";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet],
-  template: `
-    <h1 class="text-3xl font-bold underline text-cyan-400">
-      Welcome to {{ title }}!
-    </h1>
-
-    <router-outlet />
-  `,
+  imports: [RouterOutlet, RouterLink],
+  templateUrl: "./app.component.html",
   styles: [],
 })
 export class AppComponent implements OnInit {
