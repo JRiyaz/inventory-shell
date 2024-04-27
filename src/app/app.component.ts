@@ -1,7 +1,6 @@
 import { Component, HostBinding, OnInit, effect, signal } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterLink, RouterOutlet } from "@angular/router";
-import { initFlowbite } from "flowbite";
 
 @Component({
   selector: "app-root",
@@ -31,18 +30,17 @@ export class AppComponent implements OnInit {
     return this.darkMode();
   }
 
-  @HostBinding("class.green") get theme() {
-    return this.themeSelected;
-  }
+  // @HostBinding("class.green") get theme() {
+  //   return this.themeSelected;
+  // }
 
   constructor() {
     effect(() => {
+      console.log(`Dark mode toggled. The status is: ${this.darkMode()}`);
       window.localStorage.setItem("darkMode", JSON.stringify(this.darkMode()));
     });
-    console.log(this.themeSelected);
+    // console.log(this.themeSelected);
   }
 
-  ngOnInit(): void {
-    initFlowbite();
-  }
+  ngOnInit(): void {}
 }
