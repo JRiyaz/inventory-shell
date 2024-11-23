@@ -1,12 +1,11 @@
-import { Component, HostBinding, OnInit, effect, signal } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { Component, HostBinding, OnInit, effect, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: "app-root",
-  standalone: true,
+  selector: 'app-root',
   imports: [RouterOutlet, RouterLink, FormsModule],
-  templateUrl: "./app.component.html",
+  templateUrl: './app.component.html',
   styles: [
     `
       input:checked {
@@ -20,13 +19,13 @@ import { RouterLink, RouterOutlet } from "@angular/router";
   ],
 })
 export class AppComponent implements OnInit {
-  title = "shell";
+  title = 'shell';
   themeSelected = false;
   darkMode = signal<boolean>(
-    JSON.parse(window.localStorage.getItem("darkMode") || "false"),
+    JSON.parse(window.localStorage.getItem('darkMode') || 'false'),
   );
 
-  @HostBinding("class.dark") get mode() {
+  @HostBinding('class.dark') get mode() {
     return this.darkMode();
   }
 
@@ -37,7 +36,7 @@ export class AppComponent implements OnInit {
   constructor() {
     effect(() => {
       console.log(`Dark mode toggled. The status is: ${this.darkMode()}`);
-      window.localStorage.setItem("darkMode", JSON.stringify(this.darkMode()));
+      window.localStorage.setItem('darkMode', JSON.stringify(this.darkMode()));
     });
     // console.log(this.themeSelected);
   }
