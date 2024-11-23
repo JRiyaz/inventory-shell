@@ -1,45 +1,96 @@
-import { Component, HostBinding, OnInit, effect, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterLink, RouterOutlet } from "@angular/router";
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, FormsModule],
-  templateUrl: './app.component.html',
-  styles: [
-    `
-      input:checked {
-        background-color: #22c55e; /* bg-green-500 */
-      }
-
-      input:checked ~ span:last-child {
-        --tw-translate-x: 1.75rem; /* translate-x-7 */
-      }
-    `,
-  ],
+  selector: "app-root",
+  imports: [RouterOutlet, RouterLink],
+  template: `
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                routerLink="/user-sample"
+                >user-sample</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/sample">sample</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/something">something</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                User Routes
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" routerLink="/user-app/carousel"
+                    >carousel</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/user-app/model"
+                    >model</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/user-app/something"
+                    >something</a
+                  >
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <router-outlet />
+  `,
+  styles: [],
 })
-export class AppComponent implements OnInit {
-  title = 'shell';
-  themeSelected = false;
-  darkMode = signal<boolean>(
-    JSON.parse(window.localStorage.getItem('darkMode') || 'false'),
-  );
-
-  @HostBinding('class.dark') get mode() {
-    return this.darkMode();
-  }
-
-  // @HostBinding("class.green") get theme() {
-  //   return this.themeSelected;
-  // }
-
-  constructor() {
-    effect(() => {
-      console.log(`Dark mode toggled. The status is: ${this.darkMode()}`);
-      window.localStorage.setItem('darkMode', JSON.stringify(this.darkMode()));
-    });
-    // console.log(this.themeSelected);
-  }
-
-  ngOnInit(): void {}
+export class AppComponent {
+  title = "shell";
 }
